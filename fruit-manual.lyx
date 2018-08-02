@@ -1,0 +1,531 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "palatino" "default"
+\font_sans "helvet" "default"
+\font_typewriter "courier" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 4cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\begin_inset FormulaMacro
+\newcommand{\fruit}{\textrm{FR}\mu\textrm{IT}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\fruitos}{\textrm{FruitOS}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\fruitagent}{\texttt{fruit-agent}}
+\end_inset
+
+
+\begin_inset Formula $\fruit$
+\end_inset
+
+ Manual
+\end_layout
+
+\begin_layout Author
+Tony Garnock-Jones <tonyg@leastfixedpoint.com>
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+\begin_inset Formula $\fruit$
+\end_inset
+
+ Architecture
+\end_layout
+
+\begin_layout Itemize
+Node — a Raspberry Pi running 
+\begin_inset Formula $\fruitos$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Running 
+\begin_inset Formula $\fruitagent$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Managed by the Management Server
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Management Server
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+regular Linux of some kind
+\end_layout
+
+\begin_layout Itemize
+running Docker
+\end_layout
+
+\begin_layout Itemize
+services are Dockerized
+\end_layout
+
+\begin_layout Itemize
+hosts API
+\end_layout
+
+\begin_layout Itemize
+hosts user database
+\end_layout
+
+\begin_layout Itemize
+hosts OpenVPN master
+\end_layout
+
+\end_deeper
+\begin_layout Chapter
+Management Server Administration
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+target "https://fruit-testbed.org/console/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+target "https://fruit-testbed.org/api"
+
+\end_inset
+
+ — the API base URL
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+target "https://fruit-testbed.org/api/ui"
+
+\end_inset
+
+ — Swagger-generated API documentation
+\end_layout
+
+\end_deeper
+\begin_layout Chapter
+Running 
+\begin_inset Formula $\fruitos$
+\end_inset
+
+ on a Raspberry Pi
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\fruitos$
+\end_inset
+
+ runs on a range of Raspberry Pi boards including the Pi Zero, Zero W, 1,
+ 2, 3, and 3B+.
+ Both 32-bit and 64-bit operating system variants are supported on 64-bit
+ capable boards.
+ In addition, it is possible to run 
+\begin_inset Formula $\fruitos$
+\end_inset
+
+ on other boards such as ((TODO)), though this is not yet a fully supported
+ process.
+\end_layout
+
+\begin_layout Section
+Preparing your SD card
+\end_layout
+
+\begin_layout Section
+Creating a node administrator account
+\end_layout
+
+\begin_layout Section
+Registering a node
+\end_layout
+
+\begin_layout Section
+SD card partitions and mounts in a running system
+\end_layout
+
+\begin_layout Standard
+Once installed and running, 
+\begin_inset Formula $\fruitos$
+\end_inset
+
+ configures your SD card to have four partitions.
+ From the running system, the SD card as a whole appears as 
+\family typewriter
+/dev/mmcblk0
+\family default
+, and its partitions appear as 
+\family typewriter
+/dev/mmcblk0p1
+\family default
+ through 
+\family typewriter
+mmcblk0p4
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mmcblk0p1
+\family default
+ is the 
+\emph on
+boot
+\emph default
+ partition, formatted as FAT32.
+ It includes the standard Raspberry Pi binary blobs such as 
+\family typewriter
+bootcode.bin
+\family default
+, 
+\family typewriter
+start.elf
+\family default
+, and so on.
+ However, it also includes 
+\begin_inset Formula $\fruitos$
+\end_inset
+
+-specific bootloader code and control files, as detailed in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:The-FruitOS-boot-process"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Its size is fixed at installation time to ((TODO)) megabytes.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mmcblk0p2
+\family default
+ and 
+\family typewriter
+mmcblk0p3
+\family default
+ are the 
+\emph on
+immutable root filesystem
+\emph default
+ partitions, formatted as 
+\family typewriter
+ext4
+\family default
+.
+ At any given time when the system is running, one of the two partitions
+ is 
+\emph on
+active
+\emph default
+ and the other is 
+\emph on
+inactive
+\emph default
+.
+ The boot loader alternates between the two each time the system is rebooted.
+ The update process always updates the inactive partition, while running
+ from the active partition.
+ If one of the partitions is damaged during an update, the system will boot
+ from the other and will repair the damaged partition using the content
+ of the undamaged partition.
+ In this way, 
+\begin_inset Formula $\fruitos$
+\end_inset
+
+ is robust against certain kinds of update failure.
+ Both partitions are fixed at installation time to ((TODO)) megabytes, and
+ it is important that they have exactly the same number of sectors in order
+ to allow the update process to work reliably.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+mmcblk0p4
+\family default
+ is the 
+\emph on
+data
+\emph default
+ partition, formatted as 
+\family typewriter
+btrfs
+\family default
+.
+ At present, it contains two directories which are overlaid atop the active
+ root filesystem, thereby allowing for persistent configuration and other
+ data to automatically be brought forward across reboots and system upgrades.
+ The first of the overlaid directories contains SSH key information; the
+ second contains docker control and data files.
+ User applications may make informal use of this partition; in future, 
+\begin_inset Formula $\fruitos$
+\end_inset
+
+ will support such use in a more controlled way.
+ This partition is 
+\emph on
+created
+\emph default
+ at installation time to use the entirety of the portion of the SD card
+ not used by the other, fixed-size partitions.
+\end_layout
+
+\begin_layout Standard
+The partitions are mounted as follows:
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+/
+\family default
+ is an overlay filesystem, with whichever of 
+\family typewriter
+mmcblk0p2
+\family default
+ or 
+\family typewriter
+mmcblk0p3
+\family default
+ is active at the bottom of the stack, a 
+\family typewriter
+tmpfs
+\family default
+ next, and then 
+\family typewriter
+/etc/ssh
+\family default
+ and 
+\family typewriter
+/var/lib/docker
+\family default
+ directories from the 
+\family typewriter
+.etc_ssh
+\family default
+ and 
+\family typewriter
+.docker
+\family default
+ directories of 
+\family typewriter
+mmcblk0p4
+\family default
+, respectively.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+/media/mmcblk0p1
+\family default
+ is a read-write mount of the boot partition.
+ Various system processes update the boot code and configuration files in
+ this partition from time to time.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+/media/root-ro
+\family default
+ is a read-only mount of the active root filesystem (either 
+\family typewriter
+mmcblk0p2
+\family default
+ or 
+\family typewriter
+mmcblk0p3
+\family default
+).
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+/media/root-rw
+\family default
+ is the 
+\family typewriter
+tmpfs
+\family default
+ that is overlaid atop 
+\family typewriter
+root-ro
+\family default
+ as part of the stack making up the 
+\family typewriter
+/
+\family default
+ overlay mount.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+/media/data
+\family default
+ is a read-write mount of 
+\family typewriter
+mmcblk0p4
+\family default
+.
+ At present, 
+\begin_inset Formula $\fruitos$
+\end_inset
+
+ does not impose any structure on this portion of the filesystem, with the
+ exception of the 
+\family typewriter
+.etc_ssh
+\family default
+ and 
+\family typewriter
+.docker
+\family default
+ directories mentioned above.
+\end_layout
+
+\begin_layout Standard
+In addition, for convenience, 
+\family typewriter
+/data
+\family default
+ is a symbolic link to 
+\family typewriter
+/media/data
+\family default
+.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:The-FruitOS-boot-process"
+
+\end_inset
+
+The 
+\begin_inset Formula $\fruitos$
+\end_inset
+
+ boot process
+\end_layout
+
+\end_body
+\end_document
